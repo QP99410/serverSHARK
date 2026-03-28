@@ -79,3 +79,6 @@ db-local.json
 
 smartshark/datacollection/temp
 static/
+media/*
+plugin_installations/*
+db.sqlite3

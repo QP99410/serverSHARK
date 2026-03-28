@@ -13,7 +13,7 @@ import logging
 import os
 import string
 import json
-
+import base64 
 import redis
 
 from django.conf import settings
@@ -208,8 +208,16 @@ class LocalQueueConnector(PluginManagementInterface, BaseConnector):
 
             self._execute_command({'shell': cmd})
 
-            # we always return true because we do not have channel back for job execution results
-            installations.append((True, None))
+            # OLD NOTE: we always return true because we do not have channel back for job execution results
+                # installations.append((True, None))
+            # UPDATE: Try to fix the OLD NOTE by initializing Install status as False, 
+            # then run command updating db to config the Install status 
+            # after finishing installation process
+            py_code = "from smartshark.models import Plugin; Plugin.objects.filter(id={}).update(installed=True)".format(plugin.id)
+            b64_code = base64.b64encode(py_code.encode('utf-8')).decode('utf-8')
+            db_update = "python manage.py shell -c exec(__import__('base64').b64decode('{}'))".format(b64_code)
+            self._execute_command({'shell': db_update})
+            installations.append((False, "Installing ..."))
 
         return installations
 
