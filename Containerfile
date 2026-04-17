@@ -33,7 +33,7 @@ WORKDIR /app
 
 # 5. Install base requirements
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel pybind11 "pandas<2.0.0" "scikit-learn<1.2.0" "numpy<1.24.0" "scipy<1.10.0"
 
 # Install modern pygit2 for Bullseye compatibility
 RUN sed -i '/pygit2/d' requirements.txt && \
