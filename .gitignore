@@ -81,5 +81,6 @@ smartshark/datacollection/temp
 static/
 media/*
 plugin_installations/*
+plugin_installations_backup/*
 db.sqlite3
 *plugin_output/*
