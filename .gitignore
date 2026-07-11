@@ -85,5 +85,6 @@ plugin_installations_backup/*
 db.sqlite3
 *plugin_output/*
 *openStaticAnalyzer/*
+OpenStaticAnalyzer*
 
 .DS_Store
