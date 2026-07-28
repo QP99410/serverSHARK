@@ -65,7 +65,7 @@ def count_on_dependency_tree(tree, parent_id):
             count_on_dependency_tree(deb, _id)
 
 def delete_file_from_gridfs_for_project(project_id):
-    vcs_systems = handler.client.get_database(handler.database).get_collection('v_c_s_system').find({'project_id': project_id})
+    vcs_systems = handler.client.get_database(handler.database).get_collection('vcs_system').find({'project_id': project_id})
     fs = GridFSBucket(handler.client.get_database(handler.database), bucket_name='repository_data')
     for vcs_system in vcs_systems:
         try:
