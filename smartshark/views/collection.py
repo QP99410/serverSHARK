@@ -368,7 +368,10 @@ def installgithub(request):
                     urllib.request.urlretrieve(tarBall["browser_download_url"],filename)
                     try:
                         plugin = Plugin()
-                        plugin.load_from_json(File(open(filename, 'rb')))
+                        # Fix the duplicated nested folders issue when downloading plugin files
+                        download_file = File(open(filename, 'rb'))
+                        download_file.name = data["node_id"] + '.tar.gz'
+                        plugin.load_from_json(download_file)
                     except ValidationError as e:
                         return render(request, 'smartshark/plugin/github/select.html',
                                       {

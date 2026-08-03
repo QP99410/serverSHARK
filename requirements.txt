@@ -10,7 +10,8 @@ django-bootstrap3
 git+http://github.com/ouhouhsami/django-progressbarupload.git#egg=django-progressbarupload
 requests
 sshtunnel
-pygit2 == 0.26.2
 redis
-pycoshark
+pycoshark @ git+https://github.com/smartshark/pycoSHARK.git@2.0.1
 mongoengine
+validate_email
+jira

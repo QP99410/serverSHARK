@@ -166,7 +166,7 @@ class SchemaReference:
 
 
 def get_commit_from_database(db, commitHex, vcs_system_id):
-    return db.commit.find_one({"revision_hash": commitHex, 'vcs_system_id': vcs_system_id})
+    return db.commit.find_one({"revision_hash": commitHex, 'vcs_system_ids': vcs_system_id})
 
 
 def get_code_entities_from_database(db, db_commit, use_meme):

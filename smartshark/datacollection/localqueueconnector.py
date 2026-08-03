@@ -13,7 +13,6 @@ import logging
 import os
 import string
 import json
-
 import redis
 
 from django.conf import settings
